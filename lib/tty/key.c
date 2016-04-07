@@ -614,7 +614,7 @@ try_channels (int set_timeout)
 
         FD_ZERO (&select_set);
         FD_SET (input_fd, &select_set); /* Add stdin */
-        maxfdp = max (add_selects (&select_set), input_fd);
+        maxfdp = MAX (add_selects (&select_set), input_fd);
 
         if (set_timeout)
         {
@@ -1709,7 +1709,7 @@ is_idle (void)
 
     FD_ZERO (&select_set);
     FD_SET (input_fd, &select_set);
-    nfd = max (0, input_fd) + 1;
+    nfd = MAX (0, input_fd) + 1;
     time_out.tv_sec = 0;
     time_out.tv_usec = 0;
 #ifdef HAVE_LIBGPM
@@ -1718,7 +1718,7 @@ is_idle (void)
         if (gpm_fd >= 0)
         {
             FD_SET (gpm_fd, &select_set);
-            nfd = max (nfd, gpm_fd + 1);
+            nfd = MAX (nfd, gpm_fd + 1);
         }
         else
         {
@@ -1987,7 +1987,7 @@ tty_get_event (struct Gpm_Event *event, gboolean redo_event, gboolean block)
 
         FD_ZERO (&select_set);
         FD_SET (input_fd, &select_set);
-        nfd = max (add_selects (&select_set), max (0, input_fd)) + 1;
+        nfd = MAX (add_selects (&select_set), MAX (0, input_fd)) + 1;
 
 #ifdef HAVE_LIBGPM
         if (mouse_enabled && (use_mouse_p == MOUSE_GPM))
@@ -1995,7 +1995,7 @@ tty_get_event (struct Gpm_Event *event, gboolean redo_event, gboolean block)
             if (gpm_fd >= 0)
             {
                 FD_SET (gpm_fd, &select_set);
-                nfd = max (nfd, gpm_fd + 1);
+                nfd = MAX (nfd, gpm_fd + 1);
             }
             else
             {
