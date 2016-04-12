@@ -52,6 +52,9 @@ include cython.syntax
 file ..\*\\.(rb|RB)$ Ruby\sProgram ^#!.\*([\s/]ruby|@RUBY@)
 include ruby.syntax
 
+file ..\*\\.(cr|CR)$ Crystal\sProgram
+include crystal.syntax
+
 file ..\*\\.(man|[0-9n]|[0-9](x|ncurses|ssl|p|pm|menu|form|vga|t|td))$ NROFF\sSource
 include nroff.syntax
 

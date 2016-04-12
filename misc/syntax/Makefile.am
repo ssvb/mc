@@ -13,6 +13,7 @@ SYNTAXFILES =			\
 	cabal.syntax		\
 	changelog.syntax	\
 	cmake.syntax		\
+	crystal.syntax		\
 	cs.syntax		\
 	css.syntax		\
 	cxx.syntax		\
